@@ -41,11 +41,12 @@ parsePng(fs.readFileSync('unicorn.png')).then(png => {
 
 ## API
 
-### parsePng(buffer)
+### parsePng(buffer, [options])
+
+Returns a promise for a PNG instance. See the [pngjs documentation](https://github.com/lukeapage/pngjs#async-api) for more information.
 
 #### buffer
 
-*Required*<br>
 Type: `buffer`
 
 A PNG image buffer.
@@ -54,7 +55,7 @@ A PNG image buffer.
 
 Type: `object`
 
-See the [pngjs options](https://github.com/lukeapage/pngjs).
+See the [pngjs options](https://github.com/lukeapage/pngjs#options).
 
 
 ## License
