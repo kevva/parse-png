@@ -7,21 +7,16 @@ module.exports = (buf, opts) => {
 	}
 
 	return new Promise((resolve, reject) => {
-		const png = new PNG(opts);
-		let obj = {};
+		let png = new PNG(opts);
 
 		png.on('error', reject);
 
 		png.on('metadata', data => {
-			obj = data;
+			png = Object.assign(png, data);
 		});
 
-		png.on('parsed', data => {
-			obj.data = data;
-			obj.adjustGamma = png.adjustGamma.bind(png);
-			obj.bitblt = png.bitblt.bind(png);
-			obj.pack = png.pack.bind(png);
-			resolve(obj);
+		png.on('parsed', () => {
+			resolve(png);
 		});
 
 		png.end(buf);
