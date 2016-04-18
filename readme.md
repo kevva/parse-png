@@ -16,8 +16,8 @@ $ npm install --save parse-png
 const fs = require('fs');
 const parsePng = require('parse-png');
 
-parsePng(fs.readFileSync('unicorn.png')).then(data => {
-	console.log(data);
+parsePng(fs.readFileSync('unicorn.png')).then(png => {
+	console.log(png);
 	/*
 	{
 		width: 200,
@@ -29,9 +29,12 @@ parsePng(fs.readFileSync('unicorn.png')).then(data => {
 		alpha: false,
 		bpp: 3,
 		colorType: 2,
-		data: <Buffer 29 48 4d ...>
+		data: <Buffer 29 48 4d ...>,
 	}
 	*/
+
+	png.adjustGamma();
+	png.pack().pipe(fs.createWriteStream('unicorn-adjusted.png'));
 });
 ```
 

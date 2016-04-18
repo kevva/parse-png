@@ -18,6 +18,9 @@ module.exports = (buf, opts) => {
 
 		png.on('parsed', data => {
 			obj.data = data;
+			obj.adjustGamma = png.adjustGamma.bind(png);
+			obj.bitblt = png.bitblt.bind(png);
+			obj.pack = png.pack.bind(png);
 			resolve(obj);
 		});
 
