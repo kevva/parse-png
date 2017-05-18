@@ -24,12 +24,12 @@
     "promise"
   ],
   "dependencies": {
-    "pngjs": "^2.2.0"
+    "pngjs": "^3.2.0"
   },
   "devDependencies": {
     "ava": "*",
-    "file-type": "^3.8.0",
-    "get-stream": "^2.0.0",
+    "file-type": "^4.3.0",
+    "get-stream": "^3.0.0",
     "pify": "^2.3.0",
     "xo": "*"
   },
