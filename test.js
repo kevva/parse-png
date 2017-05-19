@@ -17,3 +17,13 @@ test('pack', async t => {
 	const png = await fn(await pify(fs.readFile)('./fixture.png'));
 	t.deepEqual(fileType(await getStream.buffer(png.pack())), {ext: 'png', mime: 'image/png'});
 });
+
+test('parse interlaced png', async t => {
+	const data = await fn(await pify(fs.readFile)('./fixture-interlaced.png'));
+	t.true(data.interlace);
+});
+
+test('pack interlaced png', async t => {
+	const png = await fn(await pify(fs.readFile)('./fixture-interlaced.png'));
+	t.deepEqual(fileType(await getStream.buffer(png.pack())), {ext: 'png', mime: 'image/png'});
+});
