@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save parse-png
+$ npm install parse-png
 ```
 
 
