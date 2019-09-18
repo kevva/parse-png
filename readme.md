@@ -16,7 +16,9 @@ $ npm install parse-png
 const fs = require('fs');
 const parsePng = require('parse-png');
 
-parsePng(fs.readFileSync('unicorn.png')).then(png => {
+(async () => {
+	const png = await parsePng(fs.readFileSync('unicorn.png'));
+
 	console.log(png);
 	/*
 	{
@@ -35,15 +37,15 @@ parsePng(fs.readFileSync('unicorn.png')).then(png => {
 
 	png.adjustGamma();
 	png.pack().pipe(fs.createWriteStream('unicorn-adjusted.png'));
-});
+})();
 ```
 
 
 ## API
 
-### parsePng(buffer, [options])
+### parsePng(buffer, options?)
 
-Returns a `Promise` for a PNG instance. See the [pngjs documentation](https://github.com/lukeapage/pngjs#async-api) for more information.
+Returns a `Promise<Object>` with a PNG instance. See the [pngjs documentation](https://github.com/lukeapage/pngjs#async-api) for more information.
 
 #### buffer
 
@@ -56,8 +58,3 @@ A PNG image buffer.
 Type: `Object`
 
 See the [pngjs options](https://github.com/lukeapage/pngjs#options).
-
-
-## License
-
-MIT © [Kevin Martensson](http://github.com/kevva)

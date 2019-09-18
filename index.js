@@ -1,9 +1,9 @@
 'use strict';
-const PNG = require('pngjs').PNG;
+const {PNG} = require('pngjs');
 
-module.exports = (buf, opts) => {
-	if (!Buffer.isBuffer(buf)) {
-		return Promise.reject(new TypeError('Expected a buffer'));
+module.exports = async (buffer, opts) => {
+	if (!Buffer.isBuffer(buffer)) {
+		throw new TypeError(`Expected \`buffer\` to be of type \`Buffer\` but received type \`${typeof buffer}\``);
 	}
 
 	return new Promise((resolve, reject) => {
@@ -16,6 +16,6 @@ module.exports = (buf, opts) => {
 		png.on('error', reject);
 		png.on('parsed', () => resolve(png));
 
-		png.end(buf);
+		png.end(buffer);
 	});
 };
